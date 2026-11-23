@@ -1,0 +1,13 @@
+Python
+Numpy
+Pandas
+seaborn
+maths
+statistics
+Data analytics
+Machine Learning
+NLP
+____________________________________
+
+Deep Learning
+
