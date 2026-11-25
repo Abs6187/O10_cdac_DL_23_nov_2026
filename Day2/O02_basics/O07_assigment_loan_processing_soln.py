@@ -1,0 +1,61 @@
+import torch
+import torch.nn as nn
+
+
+def main() -> None:
+    # Native Windows CPU execution (no CUDA or WSL2)
+    device = torch.device("cpu")
+    print("PyTorch version:", torch.__version__)
+    print("Running on device:", device)
+
+    # Explicit data: Monthly income (in ₹ thousands) -> Loan Approved (1) or Rejected (0)
+    monthly_income_k = torch.tensor(
+        [[15.0], [20.0], [25.0], [30.0], [35.0], [50.0], [60.0], [75.0], [90.0], [100.0]],
+        dtype=torch.float32,
+        device=device,
+    )
+    loan_approved = torch.tensor(
+        [[0.0], [0.0], [0.0], [0.0], [0.0], [1.0], [1.0], [1.0], [1.0], [1.0]],
+        dtype=torch.float32,
+        device=device,
+    )
+
+    # 1: Create a single linear layer (1 input feature -> 1 output logit) on `device`
+    model = nn.Linear(in_features=1, out_features=1).to(device)
+
+    # 2: Choose binary classification loss (BCEWithLogitsLoss) and SGD optimizer (lr=0.05)
+    # BCE : Binary Cross-Entropy loss for binary classification tasks
+    # SGD : Stochastic Gradient Descent optimizer with a learning rate of 0.05
+    # lr - 0.05 : 0.05 is the learning rate controlling the step size during parameter updates
+    criterion = nn.BCEWithLogitsLoss()
+    optimizer = torch.optim.SGD(model.parameters(), lr=0.05)
+
+    epochs = 4000
+    for epoch in range(1, epochs + 1):
+        # 3: Complete the 5-step PyTorch training loop:
+        optimizer.zero_grad() #   1. Clear old gradients
+        logits = model(monthly_income_k) #   2. Forward pass on `monthly_income_k`
+        loss = criterion(logits, loan_approved) #   3. Compute loss against `loan_approved`
+        loss.backward() #   4. Backpropagation
+        optimizer.step() #   5. Update parameters
+
+        if epoch % 1000 == 0:
+            print(f"Epoch {epoch:4d}/{epochs} | Loss: {loss.item():.6f}")
+
+    # Test decisions on new applicants
+    applicants_k = torch.tensor([[18.0], [38.0], [42.0], [80.0],[52.0]], dtype=torch.float32, device=device)
+
+    model.eval()
+    with torch.no_grad():
+        logits = model(applicants_k) # 4: Compute predicted approval probabilities using torch.sigmoid(...)
+        probs = torch.sigmoid(logits).squeeze(dim=1) # squeeze(dim, 1) to remove the singleton dimension for proper shape : 
+
+    print("\nLoan Decision Results:")
+    for income_k, prob in zip(applicants_k.squeeze(dim=1).tolist(), probs.tolist()):
+        # 5: Make a binary decision ("APPROVED" if probability >= 0.5 else "REJECTED")
+        decision = "APPROVED" if prob >= 0.5 else "REJECTED"
+        print(f"  Income ₹{income_k:5.1f}k/month -> Prob: {prob:.4f} | Decision: {decision}")
+
+
+if __name__ == "__main__":
+    main()
