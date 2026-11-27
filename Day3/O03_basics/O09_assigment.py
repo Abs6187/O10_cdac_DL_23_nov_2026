@@ -36,3 +36,30 @@ X_death = np.array([
 
 w_death = np.array([-1.2, 2.5])
 b_death = -0.4
+
+# Activation functions
+sigmoid = lambda z: 1.0 / (1.0 + np.exp(-z))
+tanh = lambda z: np.tanh(z)
+relu = lambda z: np.maximum(0.0, z)
+
+# TODO 1 & 2: Boundary Probability (0 to 1) -> Sigmoid
+z_sig, a_sig = single_layer_forward(X_death, w_death, b_death, sigmoid)
+print("=== TODO 1 & 2: Sigmoid (Boundary Probability 0..1) ===")
+print("z:", np.round(z_sig, 4))
+print("a (prob):", np.round(a_sig, 4))
+
+# TODO 3: Momentum Swing (-1 to +1) -> Tanh
+_, a_tanh = single_layer_forward(X_death, w_death, b_death, tanh)
+print("\n=== TODO 3: Tanh (Momentum Swing -1..+1) ===")
+print("a (momentum):", np.round(a_tanh, 4))
+
+# TODO 4: ReLU
+_, a_relu = single_layer_forward(X_death, w_death, b_death, relu)
+print("\n=== TODO 4: ReLU ===")
+print("a (relu):", np.round(a_relu, 4))
+
+# TODO 5: Set finisher (0.95 aggression) vs yorker specialist (0.85 pressure)
+X_finisher = np.vstack([X_death, [0.85, 0.95]])
+z_new, a_new = single_layer_forward(X_finisher, w_death, b_death, sigmoid)
+print("\n=== TODO 5: Added Finisher [0.85 pressure, 0.95 aggression] ===")
+print(f"New scenario -> z = {z_new[-1]:.4f}, boundary prob = {a_new[-1]:.4f}")

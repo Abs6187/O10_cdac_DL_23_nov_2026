@@ -1,0 +1,123 @@
+Day 2 - MCQ 1 Answers (Source: Day2/support/MCQ_1.pptx)
+=======================================================
+
+Quick Answer Key
+----------------
+Q1:  B    Q6:  B    Q11: D
+Q2:  A    Q7:  C    Q12: B
+Q3:  B    Q8:  B    Q13: A
+Q4:  B    Q9:  C    Q14: B
+Q5:  C    Q10: B
+
+
+======================================================================
+Section 1: Deep Learning Overview & Core Architectures
+======================================================================
+
+Q1. What is Deep Learning?
+A) A rule-based programming approach using explicit decision trees
+B) A subset of Machine Learning focusing on neural networks with many layers to model complex patterns in data
+C) A database query technique for structured tabular data only
+D) A hardware acceleration standard for CPUs
+Answer: B) A subset of Machine Learning focusing on neural networks with many layers to model complex patterns in data
+
+Q2. Which list includes all five parts of Deep Learning explicitly named in the notes?
+A) ANN, CNN, RNN, LSTM, Transformers
+B) SVM, CNN, k-NN, LSTM, Naive Bayes
+C) ANN, PCA, RNN, Random Forest, Transformers
+D) CNN, RNN, DBSCAN, Linear Regression, Transformers
+Answer: A) ANN, CNN, RNN, LSTM, Transformers
+
+Q3. How is an Artificial Neural Network (ANN) defined in the provided notes?
+A) A statistical clustering algorithm that only operates on labeled spreadsheets
+B) A computational model emulating biological neural networks in the human brain using interconnected nodes ("neurons")
+C) A rule engine that requires explicit step-by-step instructions for every prediction
+D) A compression algorithm used solely for image files
+Answer: B) A computational model emulating biological neural networks in the human brain using interconnected nodes ("neurons")
+
+Q4. Which architecture is specialized for grid-like data such as images by learning spatial hierarchies of features?
+A) LSTM
+B) CNN
+C) Transformer
+D) Single-layer Perceptron
+Answer: B) CNN
+
+Q5. Which architecture uses self-attention mechanisms to process sequences in parallel?
+A) CNN
+B) RNN
+C) Transformer
+D) McCulloch-Pitts neuron
+Answer: C) Transformer
+
+Q6. How do LSTMs improve upon standard RNNs according to the notes?
+A) They remove all hidden layers from sequence models
+B) They capture long-term dependencies in sequences and address the vanishing gradient problem
+C) They convert sequential text into static 2D images
+D) They train without using any data
+Answer: B) They capture long-term dependencies in sequences and address the vanishing gradient problem
+
+
+======================================================================
+Section 2: History & Modern Computing Drivers
+======================================================================
+
+Q7. Who introduced artificial neurons in 1943?
+A) Frank Rosenblatt
+B) Marvin Minsky and Seymour Papert
+C) Warren McCulloch and Walter Pitts
+D) Geoffrey Hinton and Yann LeCun
+Answer: C) Warren McCulloch and Walter Pitts
+
+Q8. What occurred in 1969 according to the timeline?
+A) Frank Rosenblatt introduced the perceptron
+B) Marvin Minsky and Seymour Papert highlighted limitations of the perceptron
+C) Backpropagation became a popular training method
+D) Transformers replaced all neural networks
+Answer: B) Marvin Minsky and Seymour Papert highlighted limitations of the perceptron
+
+Q9. Which decade saw the backpropagation algorithm become a popular method for training neural networks in the notes?
+A) 1940s
+B) 1950s
+C) 1980s
+D) 2010s
+Answer: C) 1980s
+
+Q10. Which combination drove the prominence of Deep Learning starting in the late 2000s?
+A) Smaller datasets and single-core processors
+B) Powerful GPUs, large datasets, and the realization that deeper neural networks can achieve remarkable results on complex tasks
+C) Rule-based expert systems and punch cards
+D) Eliminating hidden layers from neural networks
+Answer: B) Powerful GPUs, large datasets, and the realization that deeper neural networks can achieve remarkable results on complex tasks
+
+
+======================================================================
+Section 3: Applications, Benefits & Industry Impact
+======================================================================
+
+Q11. Which task is NOT listed under Real-World Applications of ANN in the provided notes?
+A) Image recognition
+B) Speech recognition
+C) Autonomous driving
+D) Relational database normalization
+Answer: D) Relational database normalization
+
+Q12. Which benefit of ANNs refers to handling input data that contains errors or imperfections and still making accurate predictions?
+A) Adaptability
+B) Tolerance to Noisy Data
+C) Parallel Processing
+D) Manual Feature Engineering
+Answer: B) Tolerance to Noisy Data
+
+Q13. In which industry impact area do the notes mention optimizing production processes and predictive maintenance?
+A) Manufacturing
+B) Education
+C) Retail
+D) Media Streaming
+Answer: A) Manufacturing
+
+Q14. Which benefit allows ANNs to perform multiple computations simultaneously for faster processing and efficiency?
+A) Tolerance to Noisy Data
+B) Parallel Processing
+C) Static Rule Execution
+D) Linear Separability
+Answer: B) Parallel Processing

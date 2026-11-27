@@ -21,21 +21,20 @@ def main() -> None:
     )
 
     # TODO 1: Create a single linear layer (1 input feature -> 1 output logit) on `device`
-    model = None
+    model = nn.Linear(in_features=1, out_features=1).to(device)
 
     # TODO 2: Choose binary classification loss (BCEWithLogitsLoss) and SGD optimizer (lr=0.05)
-    criterion = None
-    optimizer = None
+    criterion = nn.BCEWithLogitsLoss()
+    optimizer = torch.optim.SGD(model.parameters(), lr=0.05)
 
     epochs = 4000
     for epoch in range(1, epochs + 1):
         # TODO 3: Complete the 5-step PyTorch training loop:
-        #   1. Clear old gradients
-        #   2. Forward pass on `monthly_income_k`
-        #   3. Compute loss against `loan_approved`
-        #   4. Backpropagation
-        #   5. Update parameters
-        pass
+        optimizer.zero_grad()
+        logits = model(monthly_income_k)
+        loss = criterion(logits, loan_approved)
+        loss.backward()
+        optimizer.step()
 
         if epoch % 1000 == 0:
             print(f"Epoch {epoch:4d}/{epochs} | Loss: {loss.item():.6f}")
@@ -46,12 +45,12 @@ def main() -> None:
     model.eval()
     with torch.no_grad():
         # TODO 4: Compute predicted approval probabilities using torch.sigmoid(...)
-        probs = None
+        probs = torch.sigmoid(model(applicants_k)).squeeze(dim=1)
 
     print("\nLoan Decision Results:")
     for income_k, prob in zip(applicants_k.squeeze(dim=1).tolist(), probs.tolist()):
         # TODO 5: Make a binary decision ("APPROVED" if probability >= 0.5 else "REJECTED")
-        decision = "PENDING"
+        decision = "APPROVED" if prob >= 0.5 else "REJECTED"
         print(f"  Income ₹{income_k:5.1f}k/month -> Prob: {prob:.4f} | Decision: {decision}")
 
 
